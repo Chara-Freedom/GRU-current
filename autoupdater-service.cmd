@@ -8,7 +8,7 @@ if !errorlevel! EQU 0 set "UPDATE=0" & goto Service
 :Loop
 choice /c abc /n /m "The local version does not match the latest version. Do you want to update and start service (A), update without starting service (B), or skip update (C)?"
 if !errorlevel! EQU 1 set "CHECK=0"
-if !errorlevel! EQU 3 GOTO Skip
+if !errorlevel! EQU 3 GOTO Service
 echo @echo off>"%temp%\autoupdater.cmd"
 echo call "%CD%\updater.cmd">>"%temp%\autoupdater.cmd"
 echo cls>>"%temp%\autoupdater.cmd"
@@ -21,9 +21,8 @@ start "" "%temp%\autoupdater.cmd"
 exit
 )
 del "%temp%\%UPD%"
-:Skip
-if "%UPDATE%" EQU "1" exit
 :Service
+if "%UPDATE%" EQU "1" exit
 ...
 Echo.
 Echo Please don't close this window, I will finish the work and check version...
