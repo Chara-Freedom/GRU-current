@@ -7,7 +7,7 @@ pause
 exit
 )
 set count=0 & for %%f in (*) do set /a count+=1
-if %count% GTR 10 (
+if %count% GTR 9 (
 choice /m "There are too many files to update. You don't want to run the updater in a folder with your personal files. Continue update anyway"
 if !errorlevel! EQU 2 exit
 )
