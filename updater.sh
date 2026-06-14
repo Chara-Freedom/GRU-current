@@ -14,7 +14,7 @@ exit
 fi
 curl "https://ipfs.io/ipns/link/test.txt" -f -s -o /dev/null
 if [ $? = 22 ]; then
-read -p "I need ipfs.io connectivity to update. Please check your Internet connection. "
+read -n 1 -p "I need ipfs.io connectivity to update. Please check your Internet connection. "
 exit
 fi
 if [[ $(ls -d */ | wc -l) -gt X || $(find . -maxdepth 1 -type f | wc -l) -gt Y ]]; then
