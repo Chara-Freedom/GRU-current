@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")"
+if ! command -v curl >/dev/null 2>&1 || ! command -v lsof >/dev/null 2>&1; then
+ if ! command -v curl >/dev/null 2>&1; then
+ echo "Error: curl is not installed. "
+ echo
+ fi
+ if ! command -v lsof >/dev/null 2>&1; then
+ echo "Error: lsof is not installed. "
+ echo
+ fi
+read -n 1 -p ""
+exit
+fi
 curl "https://ipfs.io/ipns/link/test.txt" -f -s -o /dev/null
 if [ $? = 22 ]; then
 read -p "I need ipfs.io connectivity to update. Please check your Internet connection. "
