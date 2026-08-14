@@ -6,13 +6,12 @@ pause
 exit
 )
 del "%temp%\test.txt"
-set countfile=0 & for %%f in (*) do set /a countfile+=1
-set countfolder=0 & for /D %%a in ("%CD%\*") do set /a countfolder+=1
-if %countfile% lss X if %countfolder% lss Y goto Skip
-choice /m "There are too many files to update. You don't want to run the updater in a folder with your personal files. Continue update anyway"
-if %errorlevel% EQU 2 exit
-:Skip
 if "%CD:~-1%" == "\" (set "WAY=%CD:~0,-1%") else set "WAY=%CD%"
+for %%I in (VERSION*) do set "UPD=%%~nxI"
+if not exist "%UPD%" (
+md X
+cd X
+)
 FOR /F "tokens=2*" %%B IN ('tasklist ^| findstr process.exe') DO taskkill /PID %%B >nul 2>&1
 (
 echo @echo off
