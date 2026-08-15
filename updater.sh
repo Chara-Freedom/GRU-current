@@ -19,8 +19,8 @@ exit
 fi
 UPD=(VERSION*)
 if [ ! -f $UPD ]; then
-mkdir X
-cd X
+mkdir "./X"
+cd "./X"
 fi
 lsof -t "./ld-linux-x86-64.so.2" 2>/dev/null | xargs -r kill
 if [[ -f "./AUTO.no" ]]; then
