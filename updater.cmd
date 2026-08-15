@@ -9,8 +9,8 @@ del "%temp%\test.txt"
 if "%CD:~-1%" == "\" (set "WAY=%CD:~0,-1%") else set "WAY=%CD%"
 for %%I in (VERSION*) do set "UPD=%%~nxI"
 if not exist "%UPD%" (
-md X
-cd X
+md "%WAY%\X"
+cd "%WAY%\X"
 )
 FOR /F "tokens=2*" %%B IN ('tasklist ^| findstr process.exe') DO taskkill /PID %%B >nul 2>&1
 (
